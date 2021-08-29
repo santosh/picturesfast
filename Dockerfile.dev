@@ -1,0 +1,17 @@
+FROM python:3.7-slim
+
+RUN pip install pipenv
+
+ENV PROJECT_DIR /usr/local/src/webapp
+
+WORKDIR ${PROJECT_DIR}
+
+COPY Pipfile Pipfile.lock ${PROJECT_DIR}/
+
+RUN pipenv install --system --deploy
+
+COPY backend ${PROJECT_DIR}/backend
+
+EXPOSE 8000
+
+CMD [ "uvicorn", "backend.main:app", "--reload", "--host", "0.0.0.0" ]
