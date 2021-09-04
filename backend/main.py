@@ -4,14 +4,14 @@ from fastapi import FastAPI, APIRouter, Depends, Request, HTTPException, status
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 
-# from backend.routers import photo
-from backend.routers import user
+# from routers import photo
+from routers import user
 
-# from backend.db import models
+# from db import models
 
 app = FastAPI()
 
-templates = Jinja2Templates(directory="backend/templates")
+templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def get_homepage(request: Request):

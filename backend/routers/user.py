@@ -6,7 +6,7 @@ from fastapi import Depends, HTTPException, APIRouter, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 
-from backend import config
+import config
 
 fake_users_db = {
     "johndoe": {

@@ -1,0 +1,15 @@
+FROM python:3.7-slim
+
+RUN pip install pipenv
+
+WORKDIR /usr/local/src/webapp
+
+COPY Pipfile Pipfile.lock ./
+
+RUN pipenv install --system --deploy
+
+COPY . .
+
+EXPOSE 8000
+
+CMD [ "uvicorn", "main:app", "--reload", "--host", "0.0.0.0" ]
